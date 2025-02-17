@@ -21,6 +21,8 @@
 - (void)stop;
 - (void)setHdrMode:(BOOL)enabled;
 
+- (void) reinitializeDisplayLayer;
+
 - (int)submitDecodeBuffer:(unsigned char *)data length:(int)length bufferType:(int)bufferType decodeUnit:(PDECODE_UNIT)du;
 
 @end
