@@ -60,7 +60,7 @@
 static NSMutableSet* hostList;
 
 - (void)startPairing:(NSString *)PIN {
-    // Needs to be synchronous to ensure the alert is shown before any potential
+    // Needs to be synchronousz to ensure the alert is shown before any potential
     // failure callback could be invoked.
     dispatch_sync(dispatch_get_main_queue(), ^{
         self->_pairAlert = [UIAlertController alertControllerWithTitle:@"Pairing"
@@ -917,6 +917,13 @@ static NSMutableSet* hostList;
     
     [self adjustScrollViewForSafeArea:self.collectionView];
     [self adjustScrollViewForSafeArea:self->hostScrollView];
+}
+
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    NSLog(@"transitioning from %f to %f", hostScrollView.frame.size.height, size.height / 2);
+    hostScrollView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height, size.width, size.height / 2);
+    [self updateHosts];
 }
 
 - (void)viewDidLoad
