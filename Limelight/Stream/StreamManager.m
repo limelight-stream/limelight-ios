@@ -112,7 +112,7 @@
     [_connection terminate];
 }
 
--(void) transitionStreamViewSize {
+- (void) transitionStreamViewSize {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self->_renderer reinitializeDisplayLayer];
     });

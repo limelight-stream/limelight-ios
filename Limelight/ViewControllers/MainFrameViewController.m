@@ -60,7 +60,7 @@
 static NSMutableSet* hostList;
 
 - (void)startPairing:(NSString *)PIN {
-    // Needs to be synchronousz to ensure the alert is shown before any potential
+    // Needs to be synchronous to ensure the alert is shown before any potential
     // failure callback could be invoked.
     dispatch_sync(dispatch_get_main_queue(), ^{
         self->_pairAlert = [UIAlertController alertControllerWithTitle:@"Pairing"
